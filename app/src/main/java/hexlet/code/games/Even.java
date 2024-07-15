@@ -1,26 +1,31 @@
-package hexlet.code;
+package hexlet.code.games;
 
-import java.util.Scanner;
 import java.util.Random;
 
-public class CheckParityGame {
+public class Even {
+
+    public static String getMessage() {
+        return "\"Answer 'yes' if the number is even, otherwise answer 'no'.\"";
+    }
+
+    public static String getQuestion() {
+        Random random = new Random();
+        var randomNumber = random.nextInt(101);
+        return randomNumber + "\n"
+    }
+
+    public static String getCorrectAnswer(String question) {
+
+    }
+
     public static void checkParity () {
         User user = new User();
         user.greetUser();
 
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
-        var correctAnswersCount = 0;
-        var randomNumber = 0;
-        var answer = "";
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-
         while (correctAnswersCount != 3) {
-            randomNumber = random.nextInt(101);
-            System.out.print("Question: " + randomNumber + "\n");
-            answer = scanner.nextLine();
-            System.out.println("Your answer: " + answer);
+
 
             if (answer.equals("yes") && randomNumber % 2 == 0) {
                 correctAnswersCount++;
