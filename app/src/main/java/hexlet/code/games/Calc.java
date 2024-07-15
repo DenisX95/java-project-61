@@ -30,7 +30,7 @@ public class Calc {
 
     public static String getOperationSigh() {
         Random random = new Random();
-        var signID = random.nextInt(4) + 1;
+        var signID = random.nextInt(3) + 1;
 
         return switch (signID) {
             case 1 -> "+";
