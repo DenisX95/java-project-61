@@ -18,3 +18,6 @@
 
 ### Asciinema Game 5 recording:
 [![asciicast](https://asciinema.org/a/iN3rRlIHUOseKlizgjUvevDG8.svg)](https://asciinema.org/a/iN3rRlIHUOseKlizgjUvevDG8)
+
+### Asciinema Game 6 recording:
+[![asciicast](https://asciinema.org/a/juB3jqfloAvQcEgHPNNK8vCW2.svg)](https://asciinema.org/a/juB3jqfloAvQcEgHPNNK8vCW2)
