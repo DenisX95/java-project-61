@@ -6,6 +6,7 @@ import hexlet.code.games.Even;
 import hexlet.code.games.Calc;
 import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 
 public class Engine {
     public static void loadGame(int gameCode) {
@@ -49,6 +50,7 @@ public class Engine {
             case 3 -> Calc.getMessage();
             case 4 -> GCD.getMessage();
             case 5 -> Progression.getMessage();
+            case 6 -> Prime.getMessage();
             default -> null;
         };
     }
@@ -59,6 +61,7 @@ public class Engine {
             case 3 -> Calc.getQuestion();
             case 4 -> GCD.getQuestion();
             case 5 -> Progression.getQuestion();
+            case 6 -> Prime.getQuestion();
             default -> null;
         };
     }
@@ -69,6 +72,7 @@ public class Engine {
             case 3 -> Calc.getCorrectAnswer(question);
             case 4 -> GCD.getCorrectAnswer(question);
             case 5 -> Progression.getCorrectAnswer(question);
+            case 6 -> Prime.getCorrectAnswer(question);
             default -> null;
         };
     }
