@@ -33,13 +33,8 @@ public class Calc {
 
     public static String getOperationSigh() {
         Random random = new Random();
-        var signID = random.nextInt(OPERATORS_COUNT) + 1;
-
-        return switch (signID) {
-            case 1 -> "+";
-            case 2 -> "-";
-            case 3 -> "*";
-            default -> null;
-        };
+        var signID = random.nextInt(OPERATORS_COUNT);
+        String[] operatorsArray = {"+", "-", "*"};
+        return operatorsArray[signID];
     }
 }
