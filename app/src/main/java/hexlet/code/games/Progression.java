@@ -12,15 +12,15 @@ public class Progression {
         Random random = new Random();
         var currentNumber = random.nextInt(20) + 1;
         var progressionStep = random.nextInt(10) + 1;
-        var posUndefinedNum = random.nextInt(10) + 1;
-        String progression = String.valueOf(currentNumber);
+        var posUndefinedNum = random.nextInt(10);
+        String progression = "";
 
-        for (var i = 1; i < 10; i++) {
-            currentNumber += progressionStep;
+        for (var i = 0; i < 10; i++) {
             progression += (i != posUndefinedNum) ? (" " + currentNumber) : " ..";
+            currentNumber += progressionStep;
         }
 
-        return progression;
+        return progression.substring(1);
     }
 
     public static String getCorrectAnswer(String question) {
