@@ -27,12 +27,8 @@ public class Prime {
             return false;
         }
 
-        if (number == 2) {
-            return true;
-        }
-
         if (number % 2 == 0) {
-            return false;
+            return number == 2;
         }
 
         for (var i = 3; i * i <= number; i++) {
