@@ -3,6 +3,9 @@ package hexlet.code.games;
 import java.util.Random;
 
 public class Progression {
+    static final int FIRST_NUM_VALUE_RANGE = 20;
+    static final int PROGRESSION_STEP_RANGE = 10;
+    static final int PROGRESSION_ITEMS_COUNT = 10;
 
     public static String getMessage() {
         return "What number is missing in the progression?";
@@ -10,12 +13,13 @@ public class Progression {
 
     public static String getQuestion() {
         Random random = new Random();
-        var currentNumber = random.nextInt(20) + 1;
-        var progressionStep = random.nextInt(10) + 1;
-        var posUndefinedNum = random.nextInt(10);
-        String progression = "";
 
-        for (var i = 0; i < 10; i++) {
+        var currentNumber = random.nextInt(FIRST_NUM_VALUE_RANGE) + 1;
+        var progressionStep = random.nextInt(PROGRESSION_STEP_RANGE) + 1;
+        var posUndefinedNum = random.nextInt(PROGRESSION_ITEMS_COUNT);
+        var progression = "";
+
+        for (var i = 0; i < PROGRESSION_ITEMS_COUNT; i++) {
             progression += (i != posUndefinedNum) ? (" " + currentNumber) : " ..";
             currentNumber += progressionStep;
         }

@@ -9,11 +9,19 @@ import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
 
 public class Engine {
+    static final int CODE_NAME_GREET = 1;
+    static final int CODE_NAME_EVEN = 2;
+    static final int CODE_NAME_CALC = 3;
+    static final int CODE_NAME_GCD = 4;
+    static final int CODE_NAME_PROGRESSION = 5;
+    static final int CODE_NAME_PRIME = 6;
+    static final int QUESTION_ITERATIONS_COUNT = 3;
+
     public static void loadGame(int gameCode) {
         var userName = User.getUserName();
         System.out.println("Hello, " + userName + "!");
 
-        if (gameCode == 1) {
+        if (gameCode == CODE_NAME_GREET) {
             return;
         }
 
@@ -22,7 +30,7 @@ public class Engine {
         var correctAnswersCount = 0;
         Scanner scanner = new Scanner(System.in);
 
-        while (correctAnswersCount != 3) {
+        while (correctAnswersCount != QUESTION_ITERATIONS_COUNT) {
             var question = getQuestion(gameCode);
             System.out.println("Question: " + question);
 
@@ -35,8 +43,9 @@ public class Engine {
                 correctAnswersCount++;
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n" +
-                        "Let's try again, " + userName + "!");
+                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '"
+                        + correctAnswer + "'.\n"
+                        + "Let's try again, " + userName + "!");
                 return;
             }
         }
@@ -46,33 +55,33 @@ public class Engine {
 
     public static String getMessage(int gameCode) {
         return switch (gameCode) {
-            case 2 -> Even.getMessage();
-            case 3 -> Calc.getMessage();
-            case 4 -> GCD.getMessage();
-            case 5 -> Progression.getMessage();
-            case 6 -> Prime.getMessage();
+            case CODE_NAME_EVEN -> Even.getMessage();
+            case CODE_NAME_CALC -> Calc.getMessage();
+            case CODE_NAME_GCD -> GCD.getMessage();
+            case CODE_NAME_PROGRESSION -> Progression.getMessage();
+            case CODE_NAME_PRIME -> Prime.getMessage();
             default -> null;
         };
     }
 
     public static String getQuestion(int gameCode) {
         return switch (gameCode) {
-            case 2 -> Even.getQuestion();
-            case 3 -> Calc.getQuestion();
-            case 4 -> GCD.getQuestion();
-            case 5 -> Progression.getQuestion();
-            case 6 -> Prime.getQuestion();
+            case CODE_NAME_EVEN -> Even.getQuestion();
+            case CODE_NAME_CALC -> Calc.getQuestion();
+            case CODE_NAME_GCD -> GCD.getQuestion();
+            case CODE_NAME_PROGRESSION -> Progression.getQuestion();
+            case CODE_NAME_PRIME -> Prime.getQuestion();
             default -> null;
         };
     }
 
     public static String getCorrectAnswer(int gameCode, String question) {
         return switch (gameCode) {
-            case 2 -> Even.getCorrectAnswer(question);
-            case 3 -> Calc.getCorrectAnswer(question);
-            case 4 -> GCD.getCorrectAnswer(question);
-            case 5 -> Progression.getCorrectAnswer(question);
-            case 6 -> Prime.getCorrectAnswer(question);
+            case CODE_NAME_EVEN -> Even.getCorrectAnswer(question);
+            case CODE_NAME_CALC -> Calc.getCorrectAnswer(question);
+            case CODE_NAME_GCD -> GCD.getCorrectAnswer(question);
+            case CODE_NAME_PROGRESSION -> Progression.getCorrectAnswer(question);
+            case CODE_NAME_PRIME -> Prime.getCorrectAnswer(question);
             default -> null;
         };
     }

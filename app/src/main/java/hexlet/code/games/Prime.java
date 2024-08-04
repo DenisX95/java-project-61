@@ -3,6 +3,7 @@ package hexlet.code.games;
 import java.util.Random;
 
 public class Prime {
+    static final int MAX_NUMERIC_VALUE = 100;
 
     public static String getMessage() {
         return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
@@ -10,7 +11,7 @@ public class Prime {
 
     public static String getQuestion() {
         Random random = new Random();
-        var randomNumber = random.nextInt(100) + 1;
+        var randomNumber = random.nextInt(MAX_NUMERIC_VALUE) + 1;
         return String.valueOf(randomNumber);
     }
 
@@ -23,20 +24,15 @@ public class Prime {
     }
 
     public static boolean isPrime(int number) {
-        if (number <= 1) {
+        if (number < 2) {
             return false;
         }
 
-        if (number % 2 == 0) {
-            return number == 2;
-        }
-
-        for (var i = 3; i * i <= number; i++) {
+        for (int i = 2; i < number / 2; i++) {
             if (number % i == 0) {
                 return false;
             }
         }
-
         return true;
     }
 }

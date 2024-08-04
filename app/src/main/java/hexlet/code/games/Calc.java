@@ -3,14 +3,17 @@ package hexlet.code.games;
 import java.util.Random;
 
 public class Calc {
+    static final int MAX_NUMERIC_VALUE = 100;
+    static final int OPERATORS_COUNT = 3;
+
     public static String getMessage() {
         return "What is the result of the expression?";
     }
 
     public static String getQuestion() {
         Random random = new Random();
-        var operand1 = random.nextInt(101);
-        var operand2 = random.nextInt(101);
+        var operand1 = random.nextInt(MAX_NUMERIC_VALUE + 1);
+        var operand2 = random.nextInt(MAX_NUMERIC_VALUE + 1);
         var operationSigh = getOperationSigh();
         return operand1 + " " + operationSigh + " " + operand2;
     }
@@ -30,7 +33,7 @@ public class Calc {
 
     public static String getOperationSigh() {
         Random random = new Random();
-        var signID = random.nextInt(3) + 1;
+        var signID = random.nextInt(OPERATORS_COUNT) + 1;
 
         return switch (signID) {
             case 1 -> "+";
