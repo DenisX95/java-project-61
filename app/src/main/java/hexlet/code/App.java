@@ -1,6 +1,7 @@
 package hexlet.code;
 
 import java.util.Scanner;
+import hexlet.code.games.*;
 
 public class App {
 
@@ -17,11 +18,17 @@ public class App {
                 6 - Prime
                 0 - Exit""");
 
-        var answer = scanner.nextInt();
+        var answer = scanner.nextLine();
         System.out.println("Your choice: " + answer + "\n");
 
-        if (answer != 0) {
-            Engine.loadGame(answer);
+        switch (answer) {
+            case "1" -> Cli.greetTheUser();
+            case "2" -> Even.startGame();
+            case "3" -> Calc.startGame();
+            case "4" -> GCD.startGame();
+            case "5" -> Progression.startGame();
+            case "6" -> Prime.startGame();
+            default -> throw new IllegalStateException("Unexpected value: " + answer);
         }
     }
 }

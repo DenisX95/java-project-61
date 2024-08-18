@@ -1,40 +1,48 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
+import hexlet.code.Util;
 
 public class Calc {
     static final int MAX_NUMERIC_VALUE = 100;
     static final int OPERATORS_COUNT = 3;
+    static final int ADDITION_CODE = 1;
+    static final int SUBTRACTION_CODE = 2;
+    static final int MULTIPLICATION_CODE = 3;
+    static final String GAME_DESCRIPTION = "What is the result of the expression?";
 
-    public static String getMessage() {
-        return "What is the result of the expression?";
+    public static void startGame() {
+        String[][] gameData = generateGameData();
+        Engine.playGame(gameData, GAME_DESCRIPTION);
     }
 
-    public static String getQuestion() {
-        Random random = new Random();
-        var operand1 = random.nextInt(MAX_NUMERIC_VALUE + 1);
-        var operand2 = random.nextInt(MAX_NUMERIC_VALUE + 1);
-        var operationSigh = getOperationSigh();
-        return operand1 + " " + operationSigh + " " + operand2;
-    }
+    public static String[][] generateGameData() {
+        var gameIterations = Engine.getGameIterations();
+        String[] questions = new String[gameIterations];
+        String[] answers = new String[gameIterations];
+        String[][] gameData = {questions, answers};
 
-    public static String getCorrectAnswer(String question) {
-        var operationElements = question.split(" ");
-        var operand1 = Integer.parseInt(operationElements[0]);
-        var operand2 = Integer.parseInt(operationElements[2]);
+        for (var i = 0; i < gameIterations; i++) {
+            var randomNumber1 = Util.getRandomNumber(MAX_NUMERIC_VALUE);
+            var randomNumber2 = Util.getRandomNumber(MAX_NUMERIC_VALUE);
+            var operationNumber = Util.getRandomNumber(OPERATORS_COUNT);
 
-        return switch (operationElements[1]) {
-            case "+" -> String.valueOf(operand1 + operand2);
-            case "-" -> String.valueOf(operand1 - operand2);
-            case "*" -> String.valueOf(operand1 * operand2);
-            default -> null;
-        };
-    }
+            switch (operationNumber) {
+                case ADDITION_CODE -> {
+                    questions[i] = randomNumber1 + " + " + randomNumber2;
+                    answers[i] = String.valueOf(randomNumber1 + randomNumber2);
+                }
+                case SUBTRACTION_CODE -> {
+                    questions[i] = randomNumber1 + " - " + randomNumber2;
+                    answers[i] = String.valueOf(randomNumber1 - randomNumber2);
+                }
+                case MULTIPLICATION_CODE -> {
+                    questions[i] = randomNumber1 + " * " + randomNumber2;
+                    answers[i] = String.valueOf(randomNumber1 * randomNumber2);
+                }
+            }
+        }
 
-    public static String getOperationSigh() {
-        Random random = new Random();
-        var signID = random.nextInt(OPERATORS_COUNT);
-        String[] operatorsArray = {"+", "-", "*"};
-        return operatorsArray[signID];
+        return gameData;
     }
 }

@@ -1,57 +1,57 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
+import hexlet.code.Util;
+import java.util.StringJoiner;
 
 public class Progression {
     static final int FIRST_NUM_VALUE_RANGE = 20;
     static final int PROGRESSION_STEP_RANGE = 10;
     static final int PROGRESSION_ITEMS_COUNT = 10;
+    static final String GAME_DESCRIPTION = "What number is missing in the progression?";
 
-    public static String getMessage() {
-        return "What number is missing in the progression?";
+    public static void startGame() {
+        String[][] gameData = generateGameData();
+        Engine.playGame(gameData, GAME_DESCRIPTION);
     }
 
-    public static String getQuestion() {
-        Random random = new Random();
+    public static String[][] generateGameData() {
+        var gameIterations = Engine.getGameIterations();
+        String[] questions = new String[gameIterations];
+        String[] answers = new String[gameIterations];
+        String[][] gameData = {questions, answers};
 
-        var currentNumber = random.nextInt(FIRST_NUM_VALUE_RANGE) + 1;
-        var progressionStep = random.nextInt(PROGRESSION_STEP_RANGE) + 1;
-        var posUndefinedNum = random.nextInt(PROGRESSION_ITEMS_COUNT);
-        var progression = "";
+        for (var i = 0; i < gameIterations; i++) {
+            var undefinedPosition = Util.getRandomNumber(PROGRESSION_ITEMS_COUNT) - 1;
+            String[] progression = generateProgression();
+            answers[i] = progression[undefinedPosition];
+            progression[undefinedPosition] = "..";
+            questions[i] = progressionToString(progression);
+        }
 
-        for (var i = 0; i < PROGRESSION_ITEMS_COUNT; i++) {
-            progression += (i != posUndefinedNum) ? (" " + currentNumber) : " ..";
+        return gameData;
+    }
+
+    public static String[] generateProgression() {
+        var currentNumber = Util.getRandomNumber(FIRST_NUM_VALUE_RANGE);
+        var progressionStep = Util.getRandomNumber(PROGRESSION_STEP_RANGE);
+        String[] progression = new String[PROGRESSION_ITEMS_COUNT];
+
+        for(var i = 0; i < PROGRESSION_ITEMS_COUNT; i++) {
+            progression[i] = String.valueOf(currentNumber);
             currentNumber += progressionStep;
         }
 
-        return progression.substring(1);
+        return progression;
     }
 
-    public static String getCorrectAnswer(String question) {
-        var progressionArray = question.split(" ");
-        var posUndefinedNum = getIndexOfElement(progressionArray, "..");
-        var previousNum1 = 0;
-        var previousNum2 = 0;
+    public static String progressionToString(String[] progression) {
+        var resultString = new StringJoiner(" ");
 
-        if (posUndefinedNum > 1) {
-            previousNum1 = Integer.parseInt(progressionArray[posUndefinedNum - 1]);
-            previousNum2 = Integer.parseInt(progressionArray[posUndefinedNum - 2]);
-        } else {
-            previousNum1 = Integer.parseInt(progressionArray[posUndefinedNum + 1]);
-            previousNum2 = Integer.parseInt(progressionArray[posUndefinedNum + 2]);
+        for (var i = 0; i < PROGRESSION_ITEMS_COUNT; i++) {
+            resultString.add(progression[i]);
         }
 
-        var progressionStep = previousNum1 - previousNum2;
-        return String.valueOf(previousNum1 + progressionStep);
+        return resultString.toString();
     }
-
-    public static int getIndexOfElement(String[] elements, String searchElement) {
-        for (var i = 0; i < elements.length; i++) {
-            if (elements[i].equals(searchElement)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
 }
