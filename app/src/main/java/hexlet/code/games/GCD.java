@@ -28,7 +28,7 @@ public class GCD {
         return gameData;
     }
 
-    public static int getGCD (int number1, int number2) {
+    public static int getGCD(int number1, int number2) {
         if (number2 > number1) {
             var transitNumber = number1;
             number1 = number2;

@@ -40,6 +40,7 @@ public class Calc {
                     questions[i] = randomNumber1 + " * " + randomNumber2;
                     answers[i] = String.valueOf(randomNumber1 * randomNumber2);
                 }
+                default -> throw new IllegalStateException("Unexpected value: " + operationNumber);
             }
         }
 

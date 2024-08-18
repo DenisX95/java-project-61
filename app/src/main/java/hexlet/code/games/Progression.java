@@ -37,7 +37,7 @@ public class Progression {
         var progressionStep = Util.getRandomNumber(PROGRESSION_STEP_RANGE);
         String[] progression = new String[PROGRESSION_ITEMS_COUNT];
 
-        for(var i = 0; i < PROGRESSION_ITEMS_COUNT; i++) {
+        for (var i = 0; i < PROGRESSION_ITEMS_COUNT; i++) {
             progression[i] = String.valueOf(currentNumber);
             currentNumber += progressionStep;
         }
