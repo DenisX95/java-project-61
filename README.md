@@ -1,18 +1,35 @@
 # java-project-61
 
-### Hexlet tests and linter status:
 [![Actions Status](https://github.com/DenisX95/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/DenisX95/java-project-61/actions)
-
-### CodeClimate linter status:
 [![Maintainability](https://api.codeclimate.com/v1/badges/570f4776d899645c8dda/maintainability)](https://codeclimate.com/github/DenisX95/java-project-61/maintainability)
 
 A project that contains 6 games. To select a game, enter its numeric code from 0 to 6
-
-### Start
-``` markdown
-make run-dist
+``` java
+Please enter the game number and press Enter.
+    1 - Greet
+    2 - Even
+    3 - Calc
+    4 - GCD
+    5 - Progression
+    6 - Prime
+    0 - Exit
 ```
 
+
+## Start
+``` markdown
+make
+```
+## Setup
+``` markdown
+make build
+```
+## Run
+``` Run
+make run
+```
+
+## Game Demo
 ### Asciinema Game 1 recording:
 [![asciicast](https://asciinema.org/a/aEclZcv4lYp6xjwBybeBzflru.svg)](https://asciinema.org/a/aEclZcv4lYp6xjwBybeBzflru)
 
