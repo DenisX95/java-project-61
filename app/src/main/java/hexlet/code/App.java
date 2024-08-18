@@ -33,7 +33,11 @@ public class App {
             case "4" -> GCD.startGame();
             case "5" -> Progression.startGame();
             case "6" -> Prime.startGame();
-            default -> throw new IllegalStateException("Unexpected value: " + answer);
+            default -> {
+                if (!answer.equals("0")) {
+                    throw new IllegalStateException("Unexpected value: " + answer);
+                }
+            }
         }
     }
 }
