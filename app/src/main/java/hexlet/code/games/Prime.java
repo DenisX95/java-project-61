@@ -17,7 +17,6 @@ public class Prime {
         String[] questions = new String[gameIterations];
         String[] answers = new String[gameIterations];
         String[][] gameData = {questions, answers};
-
         for (var i = 0; i < gameIterations; i++) {
             var randomNumber = Util.getRandomNumber(MAX_NUMERIC_VALUE);
             questions[i] = String.valueOf(randomNumber);
