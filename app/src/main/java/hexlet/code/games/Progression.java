@@ -2,7 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 import hexlet.code.Util;
-import java.util.StringJoiner;
 
 public class Progression {
     static final int FIRST_NUM_VALUE_RANGE = 20;
@@ -22,36 +21,26 @@ public class Progression {
         String[][] gameData = {questions, answers};
 
         for (var i = 0; i < gameIterations; i++) {
+            var firstValue = Util.getRandomNumber(FIRST_NUM_VALUE_RANGE);
+            var step = Util.getRandomNumber(PROGRESSION_STEP_RANGE);
+            String[] progression = generateProgression(firstValue, step, PROGRESSION_ITEMS_COUNT);
             var undefinedPosition = Util.getRandomNumber(PROGRESSION_ITEMS_COUNT) - 1;
-            String[] progression = generateProgression();
+
             answers[i] = progression[undefinedPosition];
             progression[undefinedPosition] = "..";
-            questions[i] = progressionToString(progression);
+            questions[i] = String.join(" ", progression);
         }
 
         return gameData;
     }
 
-    public static String[] generateProgression() {
-        var currentNumber = Util.getRandomNumber(FIRST_NUM_VALUE_RANGE);
-        var progressionStep = Util.getRandomNumber(PROGRESSION_STEP_RANGE);
-        String[] progression = new String[PROGRESSION_ITEMS_COUNT];
+    public static String[] generateProgression(int firstValue, int step, int length) {
+        String[] progression = new String[length];
 
-        for (var i = 0; i < PROGRESSION_ITEMS_COUNT; i++) {
-            progression[i] = String.valueOf(currentNumber);
-            currentNumber += progressionStep;
+        for (var i = 0; i < length; i++) {
+            progression[i] = String.valueOf(firstValue + i * step);
         }
 
         return progression;
-    }
-
-    public static String progressionToString(String[] progression) {
-        var resultString = new StringJoiner(" ");
-
-        for (var i = 0; i < PROGRESSION_ITEMS_COUNT; i++) {
-            resultString.add(progression[i]);
-        }
-
-        return resultString.toString();
     }
 }

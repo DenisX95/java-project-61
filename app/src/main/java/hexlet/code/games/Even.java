@@ -21,9 +21,13 @@ public class Even {
         for (var i = 0; i < gameIterations; i++) {
             var randomNumber = Util.getRandomNumber(MAX_NUMERIC_VALUE);
             questions[i] = String.valueOf(randomNumber);
-            answers[i] = randomNumber % 2 == 0 ? "yes" : "no";
+            answers[i] = isEven(randomNumber) ? "yes" : "no";
         }
 
         return gameData;
+    }
+
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
     }
 }
