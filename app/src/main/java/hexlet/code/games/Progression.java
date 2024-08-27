@@ -4,9 +4,9 @@ import hexlet.code.Engine;
 import hexlet.code.Util;
 
 public class Progression {
-    static final int FIRST_NUM_VALUE_RANGE = 20;
-    static final int PROGRESSION_STEP_RANGE = 10;
-    static final int PROGRESSION_ITEMS_COUNT = 10;
+    static final int FIRST_NUM_MAX = 20;
+    static final int STEP_RANGE = 10;
+    static final int PROGRESSION_LENGTH = 10;
     static final String GAME_DESCRIPTION = "What number is missing in the progression?";
 
     public static void startGame() {
@@ -21,10 +21,10 @@ public class Progression {
         String[][] gameData = {questions, answers};
 
         for (var i = 0; i < gameIterations; i++) {
-            var firstValue = Util.getRandomNumber(FIRST_NUM_VALUE_RANGE);
-            var step = Util.getRandomNumber(PROGRESSION_STEP_RANGE);
-            String[] progression = generateProgression(firstValue, step, PROGRESSION_ITEMS_COUNT);
-            var undefinedPosition = Util.getRandomNumber(PROGRESSION_ITEMS_COUNT) - 1;
+            var firstValue = Util.getRandomNumber(FIRST_NUM_MAX);
+            var step = Util.getRandomNumber(STEP_RANGE);
+            String[] progression = generateProgression(firstValue, step, PROGRESSION_LENGTH);
+            var undefinedPosition = Util.getRandomNumber(PROGRESSION_LENGTH) - 1;
 
             answers[i] = progression[undefinedPosition];
             progression[undefinedPosition] = "..";
